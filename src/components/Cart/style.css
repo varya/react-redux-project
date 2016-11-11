@@ -1,2 +1,19 @@
 .cart {
+    background-color:#c78d45;
+    border:1px solid #ab8e19;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #665628;
+}
+.cart:hover {
+    background-color:#bd762a;
+}
+.cart:active {
+    position:relative;
+    top:1px;
 }

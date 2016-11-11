@@ -22,7 +22,7 @@ export default class Cart extends Component {
 
   render () {
     return (
-      <Button className="header-shopping-cart old-cart-design">
+      <Button className={style.cart}>
         <Icon url={require("./cart.svg")}/>
         <span className={style.size}>
           {this.props.size}

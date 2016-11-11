@@ -13,7 +13,9 @@ export default class Button extends Component {
   render () {
 
     const props = this.props;
-    const className = props.className || style.button;
+    const className = props.className? props.className + ' ' + style.button : style.button;
+
+    console.log(className)
 
     return (
       <button className={className} {...props}>

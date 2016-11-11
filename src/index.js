@@ -16,6 +16,17 @@ const CartWithStore = connect(
     state => ({size: state.cart.goods})
     )(Cart);
 
+const App = () => {
+
+  return (
+      <div>
+      <CartWithStore/>
+      <AddToCartButton/>
+      </div>
+  )
+
+}
+
 ReactDOM.render(
   <Provider store={store} key="provider">
     <App/>
@@ -23,17 +34,3 @@ ReactDOM.render(
   ,
   document.getElementById('root')
 );
-
-const App = () => {
-
-  return (
-    <div>
-      button:
-      <AddToCartButton/>
-      <br/>
-      cart:
-      <CartWithStore/>
-    </div>
-  )
-
-}

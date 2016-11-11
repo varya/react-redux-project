@@ -19,10 +19,13 @@ const CartWithStore = connect(
 const App = () => {
 
   return (
-      <div>
-      <CartWithStore/>
+    <div>
+      <p>
+        Our fashion cart:
+        <CartWithStore/>
+      </p>
       <AddToCartButton/>
-      </div>
+    </div>
   )
 
 }

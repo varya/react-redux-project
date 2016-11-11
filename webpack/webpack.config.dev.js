@@ -8,7 +8,7 @@ module.exports = {
     './src/index.js'
   ],
   output: {
-    path: path.join(__dirname, 'public', 'static'),
+    path: path.join(__dirname, '../public', 'static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -28,23 +28,29 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel-loader'],
+        loader: 'babel',
+        query:{
+          "presets": ["es2015", "stage-0", "react"],
+          "plugins": [
+            "transform-es2015-spread",
+            "transform-decorators-legacy",
+            "transform-object-rest-spread"
+          ]
+        },
         include: [
-          path.join(__dirname, 'src')
+          path.join(__dirname, '../src')
         ]
       },
       {
         test: /\.css$/,
-        exclude: path.join(__dirname, 'data'),
         loaders: [
           'style-loader',
-          require.resolve('css-loader') + '?sourceMap',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
           'postcss-loader'
         ]
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        exclude: path.join(__dirname, 'data'),
         loaders: [
           'file?hash=sha512&digest=hex&name=[hash].[ext]',
           'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'

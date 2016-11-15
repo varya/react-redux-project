@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '../public', 'static'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/react-redux-project/static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

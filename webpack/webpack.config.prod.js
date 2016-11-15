@@ -2,9 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: [
-    'webpack-hot-middleware/client',
     './src/index.js'
   ],
   output: {
@@ -13,12 +12,17 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        'NODE_ENV': JSON.stringify('production')
       },
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
   ],
   resolve: {
      extensions: ['', 'css', '.js']
@@ -52,6 +56,11 @@ module.exports = {
         test: /\.svg$|\.png$/,
         exclude: path.join(__dirname, '../node_modules'),
         loader: 'file?name=[hash]--resolved.[ext]'
+      },
+      {
+        test: /\.md$/,
+        exclude: path.join(__dirname, '../node_modules'),
+        loader: 'null'
       }
     ]
   },
